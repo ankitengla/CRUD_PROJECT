@@ -1,0 +1,48 @@
+{% extends 'app/base.html' %}
+{% block content %}
+{% load static %}
+<style>
+
+</style>
+
+<div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+        {{msg}}
+      <form action="{% url 'savedata' %}" method='post'>
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" name="Name" placeholder="Enter your name" required>
+          </div>
+ 
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" name="number" placeholder="Enter your number" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="text" name="password" placeholder="Enter your password" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="text" name="cpassword" placeholder="Confirm your password" required>
+          </div>
+        </div>
+        {{incoreectmsg}}
+
+
+        <div class="button">
+          <input type="submit" value="SIGNUP">
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}

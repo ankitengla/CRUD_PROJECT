@@ -1,0 +1,55 @@
+{% extends 'app/base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container">
+    <div class="title">Dashboard</div>
+    <div class="content">
+      <form action="{% url 'query' %}" method="post">
+        {% csrf_token %}
+
+        <div class="user-details">
+ 
+          <div class="input-box">
+            <input type="text" name="email" placeholder="Enter your email" required readonly value={{eml}}>
+          </div>
+     
+          <div class="input-box">
+            <input type="text" name="Query" placeholder="Enter your Query" required>
+          </div>
+
+        <div class="button">
+          <input type="submit" value="Query">
+        </div>
+      </form>
+      <a href="{% url 'ShowData' pk=eml %}">Show Query</a>
+    </div>
+  </div>
+
+
+
+
+
+
+{% comment %} <div class="content_box">
+    <div class="signup_box">
+        <form action="{% url 'query' %}" method="post">
+            {% csrf_token %}
+            <h1>Dashboard</h1>
+            <div>
+                <input type="email" name="email" required placeholder="Enter Email" readonly value={{eml}}>
+            </div>
+            <div>
+                <input type="text" name="Query" required placeholder="Enter Query">
+            </div>
+        
+            <div class="submit">
+                <input type="submit" value="Query" class="button">
+            </div>
+
+        </form>
+        <a href="{% url 'ShowData' pk=eml %}">Show Query</a>
+
+    </div>
+</div> {% endcomment %}
+{% endblock %}

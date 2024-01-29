@@ -1,0 +1,54 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<style>
+    .div1{
+            margin-left: 100px;
+
+    }
+    .div1 h1{
+        color: red;
+    }
+    
+    .div1 table tr th{
+        color: white;
+        font-size: 25px;
+    }
+    .div1 table tr td input{
+        font-size: 20px;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 20px;
+        padding: 5px;
+    }
+    .div1 form input{
+        font-size: 25px;
+        margin-top: 50px;
+        border: 2px solid black;
+        border-radius: 20px;
+        padding: 10px;
+    }
+
+
+</style>
+<div class="div1">
+    <h1>Update</h1>
+    <form action="{% url 'Update' upId=edi.id %}" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>Name : </th>
+                <td><input type="text" name="name" value="{{user.name}}" required readonly></td>
+                    <th>Contact</th>
+                <td><input type="text" name="number" value="{{user.Contact}}" required readonly ></td>
+                
+                <th>E_mail</th>
+                <td><input type="text" name="UpdataEmail" value="{{edi.QueryEmail}}" required ></td>
+
+                <th>Query</th>
+                <td><input type="text" name="UpdataQuery" value="{{edi.Query}}" required ></td>                
+            </tr>
+        </table>
+        <input type="submit" value="Update">
+    </form>
+</div>
+    {% endblock%}

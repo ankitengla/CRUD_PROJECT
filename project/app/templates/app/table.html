@@ -1,0 +1,87 @@
+{% extends 'app/base.html' %}
+{% block content %}
+{% load static %}
+<style>
+  h2{
+    color: white;
+  }
+  .div1{
+    margin-left: 500px;
+    margin-top: 50px;
+  }
+  .form1{
+    margin-top: 20px;
+  }
+  .form1 input{
+    font-size: 20px;
+    text-align: center;
+    /* padding: 10px; */
+    color: red;
+  }
+  .form1 .button1{
+    background-color: yellow;
+    color: blue;
+    padding: 10px;
+    border: 1px solid black ;
+    border-radius: 20px;
+    font-size: 25px;
+  }
+  .table-wrapper table{
+    width: 800px;
+    text-align: center;
+    background-color: wheat;
+  }
+  .table-wrapper table thead tr th{
+    color: black;
+    font-size: 25px;
+    padding: 10px;
+
+  }
+  .table-wrapper table tr td{
+    color:black;
+    font-size: 20px;
+    padding: 10px;
+  }
+</style>
+
+<div class="div1">
+<h2>Query Data</h2>
+
+<form action="{% url 'search' src=user.Email %}" method="post" class="form1">
+  {% csrf_token %}
+<input type="search" name="search" placeholder="Search" >
+<input type="submit" class="button1">
+</form>
+
+
+<div class="table-wrapper">
+  <table class="fl-table" style="color: white;" border="1">
+      <thead>
+      <tr>
+          <th>ID</th>
+          <th>E-mail</th>
+          <th>Query</th>
+          <th>Edit</th>
+          <th>Delete</th>
+      </tr>
+      </thead>
+     
+      <tbody>
+        {% for i in key1 %}
+
+      <tr>
+          <td>{{i.id}}</td>
+          <td>{{i.QueryEmail}}</td>
+          <td>{{i.Query}}</td>
+          <td><a href="{% url 'edit' editId=i.id %}"><button style="background-color: green; color: white; font-size: 20px; padding: 5px;">Edit</button></a></td>
+          
+          <td><a href="{% url 'delete' delId=i.id %}"><button style="color: white; background-color: red; font-size: 20px; padding: 5px;">Delete</button></a></td>
+      </tr>
+      {% endfor %}
+
+      <tbody>
+  </table>
+</div>
+</div>
+
+{% endblock%}
